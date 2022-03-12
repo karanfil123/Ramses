@@ -1,0 +1,87 @@
+﻿
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <title>@ViewData["Title"] | Ramses</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Weblog a Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <link href="~/web/css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="~web/css/single.css">
+    <link href="~/web/css/style.css" rel='stylesheet' type='text/css' />
+    <link href="~/web/css/fontawesome-all.css" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Poppins:1  00,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800"
+          rel="stylesheet">
+</head>
+
+<body>
+    <!--Header-->
+
+    <header>
+        @await Html.PartialAsync("_TopbarPartial") 
+
+        @await Html.PartialAsync("_MenuPartial")
+    </header>
+    <!--//header-->
+    <!--/banner-->
+    <div class="banner-inner"></div>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="index.html">Ana sayfa</a>
+        </li>
+        <li class="breadcrumb-item active">Blog</li>
+    </ol>
+    <!--//banner-->
+    <!--/main-->
+    @RenderBody()
+    <!--//main-->
+    <!--footer-->
+    <footer>
+        @await Html.PartialAsync("_FooterPartial")
+    </footer>
+    <!---->
+  
+    <script src="~/web/js/jquery-2.2.3.min.js"></script>
+    
+    <script src="~/web/js/move-top.js"></script>
+    <script src="~/web/js/easing.js"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({
+                    scrollTop: $(this.hash).offset().top
+                }, 900);
+            });
+        });
+    </script>
+    
+
+    <script>
+        $(document).ready(function () {
+            $().UItoTop({
+                easingType: 'easeOutQuart'
+            });
+        });
+    </script>
+    <a href="#home" class="scroll" id="toTop" style="display: block;">
+        <span id="toTopHover" style="opacity: 1;"> </span>
+    </a>
+    <script src="~/web/js/bootstrap.js"></script>
+
+
+</body>
+
+</html>
