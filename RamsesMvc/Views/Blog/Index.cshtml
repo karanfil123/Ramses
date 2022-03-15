@@ -1,11 +1,10 @@
 ﻿@using RamsesEntities.Concrete
 @model List<Blog>
+
 @{
     ViewData["Title"] = "Blog";
     Layout = "~/Views/Shared/_BlogLayout.cshtml";
 }
-
-
 
 <section class="main-content-w3layouts-agileits">
     <div class="container">
@@ -17,14 +16,14 @@
                     @foreach (var item in Model)
                     {
                         <div class="col-lg-4 card">
-                            <a href="single.html">
+                            <a asp-controller="Blog" asp-action="/BlogDetail/@item.ID">
                                 <img src="@item.ImageUrl" class="card-img-top img-fluid" alt="">
                             </a>
                             <div class="card-body">
                                 <ul class="blog-icons my-4">
                                     <li>
                                         <a href="#">
-                                            <i class="far fa-calendar-alt"></i> @item.CreateDate.ToShortDateString()
+                                            <i class="far fa-calendar-alt"></i> @(((DateTime)item.CreateDate).ToString("dd MMM yyyy"))  @*tarih formatı - 01 ocak 2020 - *@
                                         </a>
                                     </li>
                                     <li class="mx-2">
@@ -33,17 +32,17 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
-                                            <i class="fas fa-eye"></i> 0
+                                        <a asp-controller="Blog" asp-action="#">
+                                            <i class="fas fa-eye"></i> @item.Category.Name
                                         </a>
                                     </li>
 
                                 </ul>
                                 <h5 class="card-title ">
-                                    <a href="single.html">@item.Title</a>
+                                    <a asp-controller="Blog" asp-action="/BlogDetail/@item.ID">@item.Title</a>
                                 </h5>
-                                <p class="card-text mb-3">@item.Content.Substring(0, 100) </p>
-                                <a href="single.html" class="btn btn-primary read-m">Devamı...</a>
+                                <p class="card-text mb-3">@item.Content.Substring(0, item.Content.Substring(0, 100).LastIndexOf(" "))... </p>
+                                <a asp-controller="Blog" asp-action="/BlogDetail/@item.ID" class="btn btn-primary read-m">Devamını Oku</a>
                             </div>
                         </div>
                     }
@@ -62,7 +61,7 @@
                                 <a class="page-link" href="#">3</a>
                             </li>
                             <li class="page-item">
-                                <a class="page-link" href="#"> >>>                                </a>
+                                <a class="page-link" href="#"> >>> </a>
                             </li>
                         </ul>
                     </nav>

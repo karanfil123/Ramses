@@ -13,8 +13,12 @@ namespace RamsesMvc.Controllers
         BlogManager bm = new BlogManager(new BlogRepository());
         public IActionResult Index()
         {
-            var blog = bm.GetAllBlog();
+            var blog = bm.GetBlogListByCategory();
             return View(blog);
+        }
+        public IActionResult BlogDetail( int id)
+        {
+            return View();
         }
     }
 }

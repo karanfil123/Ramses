@@ -15,7 +15,7 @@ namespace RamsesDataAccess.Concrete.Repositories
             using (var c = new Context())
             {
                 return c.Blogs.Include(x => x.Category).ToList();
-
+                
             }
         }
     }
