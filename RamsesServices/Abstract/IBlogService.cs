@@ -15,5 +15,6 @@ namespace RamsesServices.Abstract
         List<Blog> GetAllBlog();
         Blog GetBlogId(int Id);
         List<Blog> GetBlogListByCategory();
+        
     }
 }

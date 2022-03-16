@@ -18,7 +18,8 @@ namespace RamsesMvc.Controllers
         }
         public IActionResult BlogDetail( int id)
         {
-            return View();
+            var val = bm.GetBlogListById(id);
+            return View(val);
         }
     }
 }

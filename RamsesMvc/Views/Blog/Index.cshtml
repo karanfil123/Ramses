@@ -16,7 +16,7 @@
                     @foreach (var item in Model)
                     {
                         <div class="col-lg-4 card">
-                            <a asp-controller="Blog" asp-action="/BlogDetail/@item.ID">
+                            <a href="/Blog/BlogDetail/@item.ID">
                                 <img src="@item.ImageUrl" class="card-img-top img-fluid" alt="">
                             </a>
                             <div class="card-body">
@@ -39,10 +39,10 @@
 
                                 </ul>
                                 <h5 class="card-title ">
-                                    <a asp-controller="Blog" asp-action="/BlogDetail/@item.ID">@item.Title</a>
+                                    <a href="/Blog/BlogDetail/@item.ID">@item.Title</a>
                                 </h5>
                                 <p class="card-text mb-3">@item.Content.Substring(0, item.Content.Substring(0, 100).LastIndexOf(" "))... </p>
-                                <a asp-controller="Blog" asp-action="/BlogDetail/@item.ID" class="btn btn-primary read-m">Devamını Oku</a>
+                                <a href="/Blog/BlogDetail/@item.ID" class="btn btn-primary read-m">Devamını Oku</a>
                             </div>
                         </div>
                     }

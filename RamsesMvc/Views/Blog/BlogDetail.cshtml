@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<RamsesEntities.Concrete.Blog>
 @{
     ViewData["Title"] = "BlogDetail";
     Layout = "~/Views/Shared/_BlogLayout.cshtml";
@@ -11,6 +11,10 @@
         <div class="row">
             <!--left-->
             <div class="col-lg-8 left-blog-info-w3layouts-agileits text-left">  
+                @foreach (var item in Model)
+                {
+
+               
                 <div class="blog-grid-top">
                     <div class="b-grid-top">
                         <div class="blog_info_left_grid">
@@ -22,17 +26,17 @@
                             <ul>
                                 <li>
                                     <a href="#">
-                                        <i class="far fa-calendar-alt"></i> FEB 15,2018
+                                        <i class="far fa-calendar-alt"></i> @(((DateTime)item.CreateDate).ToString("dd MMM yyyy"))
                                     </a>
                                 </li>
                                 <li class="mx-2">
                                     <a href="#">
-                                        <i class="far fa-thumbs-up"></i> 201 Likes
+                                        <i class="far fa-thumbs-up"></i> 0 Beğeni
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <i class="far fa-comment"></i> 15 Comments
+                                        <i class="far fa-comment"></i> 0 Yorum
                                     </a>
                                 </li>
 
@@ -41,36 +45,33 @@
                     </div>
 
                     <h3>
-                        <a href="single.html">Amet consectetur adipisicing </a>
+                        <a href="single.html">@item.Title </a>
                     </h3>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit sedc dnmo eiusmod tempor incididunt ut labore et dolore magna
-                        aliqua uta enim ad minim ven iam quis nostrud exercitation ullamco labor nisi ut aliquip exea commodo consequat duis
-                        aute irudre dolor in elit sed uta labore dolore reprehender
+                        @item.Content.Substring(0,item.Content.Substring(0,300).LastIndexOf(" "))
                     </p>
-                    <a href="single.html" class="btn btn-primary read-m">Read More</a>
+                    <a href="single.html" class="btn btn-primary read-m">Devamını Oku</a>
                 </div>
-
+                }
                 <div class="comment-top">
-                    <h4>Comments</h4>
+                    <h4>Yorumlar</h4>
                     <div class="media">
                         <img src="~/web/images/t1.jpg" alt="" class="img-fluid" />
                         <div class="media-body">
                             <h5 class="mt-0">Joseph Goh</h5>
                             <p>
-                                Lorem Ipsum convallis diam consequat magna vulputate malesuada. id dignissim sapien velit id felis ac cursus eros.
+                                id dignissim sapien velit id felis ac cursus eros.
                                 Cras a ornare elit.
                             </p>
 
                             <div class="media mt-3">
                                 <a class="d-flex pr-3" href="#">
-                                    <img src="`/web/images/t2.jpg" alt="" class="img-fluid" />
+                                    <img src="~/web/images/t2.jpg" alt="" class="img-fluid" />
                                 </a>
                                 <div class="media-body">
                                     <h5 class="mt-0">Richard Spark</h5>
                                     <p>
-                                        Lorem Ipsum convallis diam consequat magna vulputate malesuada. id dignissim sapien velit id felis ac cursus eros.
-                                        Cras a ornare elit.
+                                        Lorem Ipsum convallis diam consequat magna vulputate malesuada. id dignissim 
                                     </p>
                                 </div>
                             </div>
