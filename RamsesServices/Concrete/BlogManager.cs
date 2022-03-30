@@ -52,6 +52,11 @@ namespace RamsesServices.Concrete
             return _blogDal.GetList(x => x.ID == id);
         }
 
+        public List<Blog> GetBlogListByWriter(int id)
+        {
+            return _blogDal.GetList(x => x.WriterId == id);
+        }
+
         public Blog GetCategoryById(int categoryId)
         {
             return _blogDal.GetById(categoryId);

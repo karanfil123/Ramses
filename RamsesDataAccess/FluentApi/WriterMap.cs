@@ -26,6 +26,7 @@ namespace RamsesDataAccess.FluentApi
             builder.Property(x => x.ModifiedByName).HasMaxLength(50).IsRequired();
             builder.Property(x => x.ModifiedDate).IsRequired();
             builder.Property(x => x.IsActive).IsRequired();
+            builder.Property(x => x.Policy).IsRequired();
             builder.ToTable("Writers");
         }
     }

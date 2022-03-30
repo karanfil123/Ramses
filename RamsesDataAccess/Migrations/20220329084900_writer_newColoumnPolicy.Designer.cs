@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RamsesDataAccess.Concrete.Contexts;
 
 namespace RamsesDataAccess.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20220329084900_writer_newColoumnPolicy")]
+    partial class writer_newColoumnPolicy
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -123,14 +125,9 @@ namespace RamsesDataAccess.Migrations
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
-                    b.Property<int>("WriterId")
-                        .HasColumnType("int");
-
                     b.HasKey("ID");
 
                     b.HasIndex("CategoryId");
-
-                    b.HasIndex("WriterId");
 
                     b.ToTable("Blogs");
                 });
@@ -343,15 +340,7 @@ namespace RamsesDataAccess.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("RamsesEntities.Concrete.Writer", "Writer")
-                        .WithMany("Blogs")
-                        .HasForeignKey("WriterId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Category");
-
-                    b.Navigation("Writer");
                 });
 
             modelBuilder.Entity("RamsesEntities.Concrete.Comment", b =>
@@ -371,11 +360,6 @@ namespace RamsesDataAccess.Migrations
                 });
 
             modelBuilder.Entity("RamsesEntities.Concrete.Category", b =>
-                {
-                    b.Navigation("Blogs");
-                });
-
-            modelBuilder.Entity("RamsesEntities.Concrete.Writer", b =>
                 {
                     b.Navigation("Blogs");
                 });

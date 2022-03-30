@@ -1,0 +1,77 @@
+﻿@model RamsesEntities.Concrete.Writer
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LoginAndRegisterLayout.cshtml";
+}
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<section class="main-content-w3layouts-agileits">
+    <div class="container">
+        <h3 class="tittle">KAYIT OL</h3>
+        <div class="inner-sec">
+            <div class="login p-5 bg-light mx-auto mw-100">
+                @using (Html.BeginForm("Index", "Register", FormMethod.Post))
+                {
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label for="validationCustom01">Adı-Soyadı:</label>
+                            @Html.TextBoxFor(x=>x.Name,new { @class="form-control"})
+                            @Html.ValidationMessageFor(x=>x.Name,"", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="validationCustom02">E-Posta :</label>
+                            @Html.TextBoxFor(x => x.Mail, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.Mail, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputPassword1 mb-2">Şifre :</label>
+                            @Html.TextBoxFor(x => x.Password, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.Password, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="validationCustom01">Resim:</label>
+                            @Html.TextBoxFor(x => x.Image, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.Image, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label for="validationCustom01">Açıklama:</label>
+                            @Html.TextAreaFor(x => x.Description, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.Description, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <img class="img-fluid " style="left:120px; bottom:10px; width: 100px; height:95px; " src="~/images/default.jpg" />
+                        </div>
+                    </div>
+                    <div class="form-row  justify-content-center flex-column">
+                        <p class=" ml-4 p-2 ">
+
+                            @Html.CheckBoxFor(x => x.Policy, new { @class = "form-check-control" }) 
+                            <a href="#" style="color:red;" id="btnKosullar">Kabul Ediyorum.</a>
+                            @Html.ValidationMessageFor(x => x.Policy, "", new { @class = "text-danger" })
+
+                        </p>
+                        <button type="submit" class="btn btn-primary submit mb-4 btnSave">Kaydet</button>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+    <script>
+
+        $('#btnKosullar').click(function () {
+            Swal.fire({
+                title: 'Kullanım Kosulları',
+                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                icon: 'info',
+                confirmButtonText: 'Kabul Ediyorum'
+            });
+        });
+    </script>
+</section>
+
+

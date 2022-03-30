@@ -6,20 +6,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace RamsesMvc.Controllers
+namespace RamsesMvc.ViewsComponents
 {
-    public class BlogController : Controller
+    public class WriterLastBlog:ViewComponent
     {
         BlogManager bm = new BlogManager(new BlogRepository());
-        public IActionResult Index()
+        public IViewComponentResult Invoke()
         {
-            var blog = bm.GetBlogListByCategory();
-            return View(blog);
-        }
-        public IActionResult BlogDetail( int id)
-        {
-            ViewBag.i = id;
-            var val = bm.GetBlogListById(id);
+            var val = bm.GetBlogListByWriter(2);
             return View(val);
         }
     }

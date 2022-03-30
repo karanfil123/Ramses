@@ -1,0 +1,20 @@
+﻿
+@model IEnumerable<RamsesEntities.Concrete.Comment>
+
+<div class="comment-top">
+    <h4>Yorumlar</h4>
+    <div class="media">
+        @foreach (var item in Model)
+        {
+
+
+            <img src="https://icon-library.com/images/icon-user/icon-user-21.jpg" alt=""  width="50" height="50"  class="img-fluid mr-3 mt-2" />
+            <div class="media-body mb-5 mt-2">
+                <h5 class="mt-0">@item.UserName</h5>
+                <p>
+                    @item.Content
+                </p>
+            </div>
+        }
+    </div>
+</div>

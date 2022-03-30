@@ -14,5 +14,7 @@ namespace RamsesEntities.Concrete
         public string Mail { get; set; }
         public string Password { get; set; }
         public string Image  { get; set; }
+        public bool Policy  { get; set; }
+        public List<Blog> Blogs { get; set; }
     }
 }

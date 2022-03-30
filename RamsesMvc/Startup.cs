@@ -31,7 +31,7 @@ namespace RamsesMvc
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+              
 
                 app.UseHsts();
             }
