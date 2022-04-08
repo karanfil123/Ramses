@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RamsesDataAccess.Concrete.Repositories;
 using RamsesServices.Concrete;
 using System;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace RamsesMvc.Controllers
 {
+    [AllowAnonymous]
     public class BlogController : Controller
     {
         BlogManager bm = new BlogManager(new BlogRepository());

@@ -13,7 +13,7 @@ namespace RamsesMvc.ViewsComponents
         BlogManager bm = new BlogManager(new BlogRepository());
         public IViewComponentResult Invoke()
         {
-            var val = bm.GetBlogListByWriter(2);
+            var val = bm.GetBlogListByWriter(3);
             return View(val);
         }
     }

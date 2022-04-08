@@ -37,6 +37,10 @@ namespace RamsesServices.Concrete
         {
             return _blogDal.GetAll();
         }
+        public List<Blog> Get3Blog()
+        {
+            return _blogDal.GetAll().Take(3).ToList();//take ile son eklenen 3 blog post listeleme
+        }
 
         public Blog GetBlogId(int Id)
         {

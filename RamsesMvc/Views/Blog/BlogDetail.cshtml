@@ -18,8 +18,8 @@
                     <div class="blog-grid-top">
                         <div class="b-grid-top">
                             <div class="blog_info_left_grid">
-                                <a href="single.html">
-                                    <img src="~/web/images/b1.jpg" class="img-fluid" alt="">
+                                <a asp-controller="Blog" asp-action="BlogDetail" >
+                                    <img src="@item.ImageUrl" class="img-fluid" alt="">
                                 </a>
                             </div>
                             <div class="blog-info-middle">
@@ -45,7 +45,7 @@
                         </div>
 
                         <h3>
-                            <a href="single.html">@item.Title </a>
+                            <a asp-controller="Blog" asp-action="BlogDetail">@item.Title </a>
                         </h3>
                         <p>
                             @item.Content
@@ -66,20 +66,14 @@
                     <div class="tech-btm">
                         <img src="~/web/images/banner1.jpg" class="img-fluid" alt="">
                     </div>
-                    <div class="tech-btm">
-                        <h4>Sign up to our newsletter</h4>
-                        <p>Pellentesque dui, non felis. Maecenas male </p>
-                        <form action="#" method="post">
-                            <input type="email" placeholder="Email" required="">
-                            <input type="submit" value="Subscribe">
-                        </form>
+                    @await Html.PartialAsync("~/Views/Subscribe/AddSubscribe.cshtml")
 
-                    </div>
+                    @await Component.InvokeAsync("CategoryList")
 
-                  @await Component.InvokeAsync("CategoryList")
+                    <h4>Son Eklenen Postlar</h4>
+                    <br />
+                    @await Component.InvokeAsync("WriterLastBlog")
 
-                  @await Component.InvokeAsync("WriterLastBlog")                    
-                   
                 </div>
 
             </aside>

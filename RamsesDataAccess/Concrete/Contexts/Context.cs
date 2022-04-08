@@ -12,6 +12,7 @@ namespace RamsesDataAccess.Concrete.Contexts
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Writer> Writers { get; set; }
+        public DbSet<Subscribe> Subscribes { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=ISMAIL; Database=RamsesDb; Integrated Security=True;");
@@ -24,6 +25,7 @@ namespace RamsesDataAccess.Concrete.Contexts
             modelBuilder.ApplyConfiguration(new CommentMap());
             modelBuilder.ApplyConfiguration(new ContactMap());
             modelBuilder.ApplyConfiguration(new WriterMap());
+            modelBuilder.ApplyConfiguration(new SubscribeMap());
         }
     }
 }
