@@ -7,12 +7,17 @@ using System.Threading.Tasks;
 
 namespace RamsesMvc.Controllers
 {
+    [AllowAnonymous]
     public class WriterController : Controller
     {
-        
+
         public IActionResult Index()
         {
             return View();
+        }
+        public PartialViewResult WriterSidebarPartial()
+        {
+            return PartialView();
         }
     }
 }
