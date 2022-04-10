@@ -65,5 +65,10 @@ namespace RamsesServices.Concrete
         {
             return _blogDal.GetById(categoryId);
         }
+
+        public List<Blog> GetBlogListWithCategoryByWriter(int id)
+        {
+            return _blogDal.GetListByCategoryByWriter(id);
+        }
     }
 }

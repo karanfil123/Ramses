@@ -13,7 +13,7 @@ namespace RamsesMvc.ViewsComponents
         CategoryManager cm = new CategoryManager(new CategoryRepository());
         public IViewComponentResult Invoke()
         {
-            var val = cm.GetAllCategory();
+            var val = cm.GetAll();
             return View(val);
         }
     }

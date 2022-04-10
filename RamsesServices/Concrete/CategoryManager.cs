@@ -17,32 +17,30 @@ namespace RamsesServices.Concrete
         public CategoryManager(ICategoryDal categoryDal)
         {
             this.categoryDal = categoryDal;
-        }
+        }       
 
-        public void CategoryAdd(Category category)
-        {
-            categoryDal.Add(category);
-        }
-
-        public void CategoryDelete(Category category)
-        {
-
-            categoryDal.Delete(category);
-        }
-
-        public void CategoryUpdate(Category category)
-        {
-            categoryDal.Update(category);
-        }
-
-        public List<Category> GetAllCategory()
-        {
-            return categoryDal.GetAll();
-        }
-
-        public Category GetCategory(int Id)
+        public Category Get(int Id)
         {
             return categoryDal.GetById(Id);
+        }
+
+        public List<Category> GetAll()
+        {
+            return categoryDal.GetAll();
+        }       
+        public void TAdd(Category t)
+        {
+            categoryDal.Add(t);
+        }
+
+        public void TDelete(Category t)
+        {
+            categoryDal.Delete(t);
+        }
+
+        public void TUpdate(Category t)
+        {
+            categoryDal.Update(t);
         }
     }
 }

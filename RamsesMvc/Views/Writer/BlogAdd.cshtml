@@ -1,0 +1,34 @@
+﻿@model RamsesEntities.Concrete.Blog
+@{
+    ViewData["Title"] = "BlogAdd";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+@using (Html.BeginForm("BlogAdd", "Writer", FormMethod.Post))
+{
+    @Html.Label("Post Başlık")
+    @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Title)
+
+    @Html.Label("Post Kategori")
+    @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.cv, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.CategoryId)
+
+    @Html.Label("Post Küçük Görsel")
+    @Html.TextBoxFor(x => x.Thumbnail, new { @class = "form-control" })
+
+    @Html.Label("Post Görsel")
+    @Html.TextBoxFor(x => x.ImageUrl, new { @class = "form-control" })
+
+    @Html.Label("Post İçerik")
+    @Html.TextAreaFor(x => x.Content, 10, 10, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Content)
+    <br />
+    <button class="btn btn-info">Kaydet</button>
+}
+
+
+
+
+
+

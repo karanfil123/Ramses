@@ -13,7 +13,7 @@ namespace RamsesMvc.Controllers
 
         public IActionResult Index()
         {
-            var category = cm.GetAllCategory();
+            var category = cm.GetAll();
             return View(category);
         }
     }

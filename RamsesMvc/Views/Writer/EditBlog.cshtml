@@ -1,0 +1,35 @@
+﻿@model RamsesEntities.Concrete.Blog
+@{
+    ViewData["Title"] = "EditBlog";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+
+<h2>Blog Güncelleme</h2>
+@using (Html.BeginForm("EditBlog", "Writer", FormMethod.Post))
+{
+    @Html.Label(" Post ID")
+    @Html.TextBoxFor(x => x.ID, new { @class = "form-control" })
+
+    @Html.Label("Post Başlık")
+    @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+
+    @Html.Label("Post Kategori")
+    @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.catV, new { @class = "form-control" })
+
+    @Html.Label("Post Küçük Görsel")
+    @Html.TextBoxFor(x => x.Thumbnail, new { @class = "form-control" })
+
+    @Html.Label("Post Görsel")
+    @Html.TextBoxFor(x => x.ImageUrl, new { @class = "form-control" })
+
+    @Html.Label("Post İçerik")
+    @Html.TextAreaFor(x => x.Content, 10, 10, new { @class = "form-control" })
+
+    @Html.Label("Post Durum")
+    @Html.CheckBoxFor(x => x.IsActive, new { @class = "form-control" })
+
+    <br />
+    <button class="btn btn-info">Güncelle</button>
+}
+
