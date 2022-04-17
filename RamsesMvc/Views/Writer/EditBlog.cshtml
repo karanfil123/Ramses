@@ -7,7 +7,7 @@
 
 <h2>Blog Güncelleme</h2>
 @using (Html.BeginForm("EditBlog", "Writer", FormMethod.Post))
-{
+{ 
     @Html.Label(" Post ID")
     @Html.TextBoxFor(x => x.ID, new { @class = "form-control" })
 

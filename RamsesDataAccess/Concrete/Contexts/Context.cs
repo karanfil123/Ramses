@@ -13,6 +13,7 @@ namespace RamsesDataAccess.Concrete.Contexts
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Writer> Writers { get; set; }
         public DbSet<Subscribe> Subscribes { get; set; }
+        public DbSet<BlogRayting> BlogRaytings { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=ISMAIL; Database=RamsesDb; Integrated Security=True;");
@@ -26,6 +27,7 @@ namespace RamsesDataAccess.Concrete.Contexts
             modelBuilder.ApplyConfiguration(new ContactMap());
             modelBuilder.ApplyConfiguration(new WriterMap());
             modelBuilder.ApplyConfiguration(new SubscribeMap());
+            modelBuilder.ApplyConfiguration(new BlogRaytingMap());
         }
     }
 }

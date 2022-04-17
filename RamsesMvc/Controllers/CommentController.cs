@@ -13,6 +13,7 @@ namespace RamsesMvc.Controllers
     public class CommentController : Controller
     {
         CommentManager cm = new CommentManager(new CommentRepository());
+        BlogManager bm = new BlogManager(new BlogRepository());
         public IActionResult Index()
         {
             return View();
@@ -23,14 +24,15 @@ namespace RamsesMvc.Controllers
             return PartialView();
         }
         [HttpPost]
-        public PartialViewResult AddCommentPartial(Comment comment)
+        public PartialViewResult AddCommentPartial(Comment comment,Blog blog)
         {
+            var val = bm.GetBlogId(blog.ID);
             comment.CreateByName = "Bülent";
             comment.CreateDate = DateTime.Parse(DateTime.Now.ToShortDateString());
             comment.ModifiedByName = "Bülent";
             comment.ModifiedDate = DateTime.Parse(DateTime.Now.ToShortDateString());
             comment.IsActive = true;
-            comment.BlogId = 2;
+            comment.BlogId =val.ID;
             cm.CommentAdd(comment);
             return PartialView();
         }
