@@ -4,10 +4,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using RamsesDataAccess.Concrete.Repositories;
 using RamsesEntities.Concrete;
+using RamsesMvc.Models;
 using RamsesServices.Concrete;
 using RamsesServices.FluentValidator;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace RamsesMvc.Controllers
@@ -16,6 +18,7 @@ namespace RamsesMvc.Controllers
     public class WriterController : Controller
     {
         BlogManager bm = new BlogManager(new BlogRepository());
+        WriterManager wm = new WriterManager(new WriterRepository());
         public IActionResult Index()
         {
             return View();
@@ -88,7 +91,7 @@ namespace RamsesMvc.Controllers
                                                     Text = x.Name,
                                                     Value = x.ID.ToString()
                                                 }).ToList();
-            ViewBag.catV = categoryVal;           
+            ViewBag.catV = categoryVal;
             var val = bm.GetBlogId(id);
             return View(val);
         }
@@ -101,8 +104,62 @@ namespace RamsesMvc.Controllers
             b.ModifiedDate = DateTime.Parse(DateTime.Now.ToShortDateString());
             b.ModifiedByName = val.ModifiedByName;
             b.IsActive = val.IsActive;
-            bm.BlogUpdate(b);           
+            bm.BlogUpdate(b);
             return RedirectToAction("BlogListWriter");
+        }
+
+        [HttpGet]
+        public IActionResult EditWriterProfile()
+        {
+            var val = wm.Get(2);
+            return View(val);
+        }
+        [HttpPost]
+        public IActionResult EditWriterProfile(Writer w)
+        {
+            ValidatorWriter vw = new ValidatorWriter();
+            ValidationResult res = vw.Validate(w);
+            if (res.IsValid)
+            {
+                wm.TUpdate(w);
+                return RedirectToAction("Index", "Dashboard");
+            }
+            else
+            {
+                foreach (var item in res.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
+            return View();
+        }
+        [HttpGet]
+        public IActionResult AddWriter()
+        {
+            return View();
+        }
+            [HttpPost]
+        public IActionResult AddWriter(AddProfileWriterImage p)
+        {
+            Writer w = new Writer();
+            if (p.ImageUrl!=null)
+            {
+                var extension = Path.GetExtension(p.ImageUrl.FileName);//ımg uzantısı
+                var newImgName = Guid.NewGuid() + extension;//random değer + uzantı
+                //yüklenen img ekleneceği location
+                var location = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/WriterImage/", newImgName);
+
+                var strem = new FileStream(location, FileMode.Create);//location dosya oluştur
+                p.ImageUrl.CopyTo(strem);
+                w.Image = newImgName;//stream değerini db ata
+            }
+            w.Mail = p.Writer.Mail;
+            w.Name = p.Writer.Name;
+            w.Password = p.Writer.Password;
+            w.IsActive = p.Writer.IsActive;
+            w.Description = p.Writer.Description;
+            wm.TAdd(w);
+            return RedirectToAction("Index","Dashboard");
         }
     }
 }

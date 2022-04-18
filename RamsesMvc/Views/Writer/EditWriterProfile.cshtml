@@ -1,0 +1,56 @@
+﻿@model RamsesEntities.Concrete.Writer
+@{
+    ViewData["Title"] = "EditWriterProfile";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+@using (Html.BeginForm("EditWriterProfile", "Writer", FormMethod.Post))
+{
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="card-title" style="text-transform:uppercase; text-decoration:underline">Yazar Profil Bilgi Düzenleme</h1>
+                <br />
+                <form class="forms-sample">
+                    <div class="form-group">
+                        @Html.HiddenFor(x=>x.ID)
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("Adı Soyadı")
+                        @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("E-Mail")
+                        @Html.TextBoxFor(x => x.Mail, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("Yeni Şifre Belirle")
+                        @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Yazar Resim</label>
+                        <input type="file" name="img[]" class="file-upload-default">
+                        <div class="input-group col-xs-12">
+                            <input type="text" class="form-control file-upload-info" disabled placeholder="Yüklemek istediğiniz resmi seçiniz">
+                            <span class="input-group-append">
+                                <button class="file-upload-browse btn btn-gradient-primary" type="button">Yükle</button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("E-Mail")
+                        @Html.TextAreaFor(x => x.Description, 10, 5, new { @class = "form-control" })
+                    </div>
+                    <button type="submit" class="btn btn-gradient-primary mr-2">Güncelle</button>
+                    <button class="btn btn-light">İptal</button>
+                </form>
+            </div>
+        </div>
+    </div>
+}
+

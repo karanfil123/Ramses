@@ -16,7 +16,32 @@ namespace RamsesServices.Concrete
         public WriterManager(IWriterDal writerDal)
         {
             _writerDal = writerDal;
-        }            
+        }
+
+        public Writer Get(int Id)
+        {
+           return _writerDal.GetById(Id);
+        }
+
+        public List<Writer> GetAll()
+        {
+            return _writerDal.GetAll();
+        }
+
+        public void TAdd(Writer t)
+        {
+            _writerDal.Add(t);
+        }
+
+        public void TDelete(Writer t)
+        {
+           
+        }
+
+        public void TUpdate(Writer t)
+        {
+            _writerDal.Update(t);
+        }
 
         public void WriterAdd(Writer writer)
         {

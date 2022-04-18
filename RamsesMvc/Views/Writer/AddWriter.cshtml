@@ -1,0 +1,52 @@
+﻿
+@model RamsesMvc.Models.AddProfileWriterImage
+@{
+    ViewData["Title"] = "AddWriter";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+<form class="forms-sample" method="post" enctype="multipart/form-data">
+
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="card-title" style="text-transform:uppercase; text-decoration:underline">Yazar Ekleme</h1>
+                <br />
+
+                <div class="form-group">
+                    @Html.HiddenFor(x => x.Writer.ID)
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("Adı Soyadı")
+                    @Html.TextBoxFor(x => x.Writer.Name, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("E-Mail")
+                    @Html.TextBoxFor(x => x.Writer.Mail, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("Yeni Şifre Belirle")
+                    @Html.PasswordFor(x => x.Writer.Password, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("Yazar Resim")
+                    <input type="file" name="ImageUrl" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("E-Mail")
+                    @Html.TextAreaFor(x => x.Writer.Description, 10, 5, new { @class = "form-control" })
+                </div>
+                <button type="submit" class="btn btn-gradient-primary mr-2">Güncelle</button>
+                <button class="btn btn-light">İptal</button>
+
+            </div>
+        </div>
+    </div>
+
+</form>
+

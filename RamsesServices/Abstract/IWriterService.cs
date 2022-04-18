@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RamsesServices.Abstract
 {
-    public interface IWriterService
+    public interface IWriterService:IGenericService<Writer>
     {
         void WriterAdd(Writer writer);
        
