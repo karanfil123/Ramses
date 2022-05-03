@@ -14,7 +14,7 @@ using System.Linq;
 
 namespace RamsesMvc.Controllers
 {
-    [AllowAnonymous]
+    [Authorize]
     public class WriterController : Controller
     {
         BlogManager bm = new BlogManager(new BlogRepository());
@@ -60,7 +60,7 @@ namespace RamsesMvc.Controllers
                 b.IsActive = true;
                 b.WriterId = 2;
                 bm.BlogAdd(b);
-                return RedirectToAction("BlogListWriter", "Writer");
+                return RedirectToAction("Index", "Dashboard");
             }
             else
             {

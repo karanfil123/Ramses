@@ -20,6 +20,8 @@ namespace RamsesMvc.Controllers
             ViewBag.bs = con.Blogs.Count().ToString();
             ViewBag.wbs = con.Blogs.Where(x=>x.WriterId==2).Count().ToString();
             ViewBag.cs = con.Categories.Count().ToString();
+          
+
             return View();
         }
     }

@@ -16,5 +16,7 @@ namespace RamsesEntities.Concrete
         public string Image  { get; set; }
         public bool Policy  { get; set; }
         public List<Blog> Blogs { get; set; }
+        public virtual ICollection<Message2> MessageSender { get; set; }
+        public virtual ICollection<Message2> MessageReceiver { get; set; }
     }
 }

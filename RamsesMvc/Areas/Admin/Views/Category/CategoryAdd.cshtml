@@ -1,0 +1,28 @@
+﻿@model RamsesEntities.Concrete.Category
+@{
+    ViewData["Title"] = "CategoryAdd";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="container ">
+    <div class="card bg-light">
+        <div class="card-header">
+            <h2>Kategori Ekle</h2>
+        </div>
+        @using (Html.BeginForm("CategoryAdd", "Category", FormMethod.Post))
+        {
+            <div class="card-body">
+
+                @Html.Label("Kategori Adı")
+                @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Name)
+
+                @Html.Label("Kategori Açıklaması")
+                @Html.TextAreaFor(x => x.Description,6,5, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Description)
+            </div>
+            <div class="card-footer"><button type="submit" class="btn btn-outline-success">Kaydet</button>  </div>
+        }
+    </div>
+</div>
+

@@ -300,6 +300,106 @@ namespace RamsesDataAccess.Migrations
                     b.ToTable("Contacts");
                 });
 
+            modelBuilder.Entity("RamsesEntities.Concrete.Message", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Receiver")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<string>("Sender")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<string>("Subject")
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Messages");
+                });
+
+            modelBuilder.Entity("RamsesEntities.Concrete.Message2", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Content")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("ReceiverID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("SenderID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Subject")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("ReceiverID");
+
+                    b.HasIndex("SenderID");
+
+                    b.ToTable("Message2s");
+                });
+
+            modelBuilder.Entity("RamsesEntities.Concrete.Notification", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("NotificationType")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Notifications");
+                });
+
             modelBuilder.Entity("RamsesEntities.Concrete.Subscribe", b =>
                 {
                     b.Property<int>("ID")
@@ -425,6 +525,21 @@ namespace RamsesDataAccess.Migrations
                     b.Navigation("Blog");
                 });
 
+            modelBuilder.Entity("RamsesEntities.Concrete.Message2", b =>
+                {
+                    b.HasOne("RamsesEntities.Concrete.Writer", "ReceiverUser")
+                        .WithMany("MessageReceiver")
+                        .HasForeignKey("ReceiverID");
+
+                    b.HasOne("RamsesEntities.Concrete.Writer", "SenderUser")
+                        .WithMany("MessageSender")
+                        .HasForeignKey("SenderID");
+
+                    b.Navigation("ReceiverUser");
+
+                    b.Navigation("SenderUser");
+                });
+
             modelBuilder.Entity("RamsesEntities.Concrete.Blog", b =>
                 {
                     b.Navigation("Comments");
@@ -438,6 +553,10 @@ namespace RamsesDataAccess.Migrations
             modelBuilder.Entity("RamsesEntities.Concrete.Writer", b =>
                 {
                     b.Navigation("Blogs");
+
+                    b.Navigation("MessageReceiver");
+
+                    b.Navigation("MessageSender");
                 });
 #pragma warning restore 612, 618
         }

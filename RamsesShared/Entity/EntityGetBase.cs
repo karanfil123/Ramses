@@ -10,9 +10,9 @@ namespace RamsesShared.Entity
     {
         public virtual int ID { get; set; }
         public virtual string CreateByName { get; set; } = "Bülent";
-        public virtual DateTime CreateDate { get; set; } = DateTime.Now;
+        public virtual DateTime CreateDate { get; set; } =DateTime.Parse( DateTime.Now.ToShortDateString());
         public virtual string ModifiedByName { get; set; } = "Bülent";
-        public virtual DateTime ModifiedDate { get; set; } = DateTime.Now;
+        public virtual DateTime ModifiedDate { get; set; } = DateTime.Parse(DateTime.Now.ToShortDateString());
         public virtual bool IsActive { get; set; } = true;
     }
 }

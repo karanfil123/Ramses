@@ -28,7 +28,7 @@ namespace RamsesMvc
                     var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
                     config.Filters.Add(new AuthorizeFilter(policy));
                 });//proje seviyesinde authorize(yetkilendirme) iþlemi
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(x => 
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(x =>
             {
                 x.LoginPath = "/Login/Index";//sistemin sayfalarýna eriþimi engelleyip logine yönlendirme iþlemi
             });
@@ -46,7 +46,7 @@ namespace RamsesMvc
             {
                 app.UseHsts();
             }
-            
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseStatusCodePages();
@@ -57,6 +57,11 @@ namespace RamsesMvc
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+
+                    name: "areas",
+                     pattern: "{area:exists}/{controller=Category}/{action=Index}/{id?}");
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Blog}/{action=Index}/{id?}");

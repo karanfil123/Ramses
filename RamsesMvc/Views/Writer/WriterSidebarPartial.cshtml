@@ -21,7 +21,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link"  asp-controller="Writer" asp-action="EditWriterProfile">
+            <a class="nav-link" asp-controller="Writer" asp-action="EditWriterProfile">
                 <span class="menu-title">Profilim</span>
                 <i class="mdi mdi-account-card-details menu-icon"></i>
             </a>
@@ -40,23 +40,29 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" asp-controller="Message" asp-action="#">
+            <a class="nav-link" asp-controller="Message" asp-action="Index">
                 <span class="menu-title">Mesajlar</span>
                 <i class="mdi mdi-comment-processing menu-icon"></i>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link"asp-controller="Blog" asp-action="Index">
+            <a class="nav-link" asp-controller="Notification" asp-action="NotificationList">
+                <span class="menu-title">Bildirimler</span>
+                <i class="mdi mdi-notification-clear-all menu-icon"></i>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="Blog" asp-action="Index">
                 <span class="menu-title">Siteye Git</span>
                 <i class="mdi mdi-car-connected menu-icon"></i>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="../../pages/tables/basic-table.html">
+            <a class="nav-link" asp-controller="Writer" asp-action="EditWriterProfile">
                 <span class="menu-title">Ayarlar</span>
                 <i class="mdi mdi-settings-box menu-icon"></i>
             </a>
-        </li>        
-        
+        </li>
+
     </ul>
 </nav>
