@@ -17,6 +17,9 @@ namespace RamsesMvc.Areas.Admin.ViewComponents
         }
         public IViewComponentResult Invoke()
         {
+            ViewBag.Name = _context.Admins.Where(x => x.ID == 1).Select(x => x.NameSurname).FirstOrDefault();
+            ViewBag.img = _context.Admins.Where(x => x.ID == 1).Select(x => x.ImageUrl).FirstOrDefault();
+            ViewBag.Desc = _context.Admins.Where(x => x.ID == 1).Select(x => x.Description).FirstOrDefault();
             return View();
         }
     }
