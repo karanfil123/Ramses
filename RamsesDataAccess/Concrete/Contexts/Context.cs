@@ -16,6 +16,7 @@ namespace RamsesDataAccess.Concrete.Contexts
         public DbSet<BlogRayting> BlogRaytings { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<Message2> Message2s { get; set; }
+        public DbSet<Admin> Admins { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -33,6 +34,7 @@ namespace RamsesDataAccess.Concrete.Contexts
             modelBuilder.ApplyConfiguration(new SubscribeMap());
             modelBuilder.ApplyConfiguration(new BlogRaytingMap());
             modelBuilder.ApplyConfiguration(new MessageMap());
+            modelBuilder.ApplyConfiguration(new AdminMap());
 
             modelBuilder.Entity<Message2>().HasOne(x => x.SenderUser).WithMany(x => x.MessageSender).HasForeignKey(x => x.SenderID).OnDelete(DeleteBehavior.ClientSetNull);
             modelBuilder.Entity<Message2>().HasOne(x => x.ReceiverUser).WithMany(x => x.MessageReceiver).HasForeignKey(x => x.ReceiverID).OnDelete(DeleteBehavior.ClientSetNull);
